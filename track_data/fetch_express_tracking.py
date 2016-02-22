@@ -60,18 +60,22 @@ def fetch_tracking_data(trackno):
     track_data['track_no'] = trackno
     track_data['time'] = make_time(data['time'])
 
-    if track_data['status'] == '0':
+    if data['status'] == '0':
         track_data['status'] = 0
     else:
-        track_data['status'] = 1
+        track_data['status'] = int(data['status'])
         for field in COPY_FIELDS:
             track_data[field] = data[field]
+        for i in xrange(len(track_data['data'])):
+            track_data['data'][i]['time'] = make_time(int(track_data['data'][i]['time']))
 
     return track_data
 
 
 STATUS_MAP = {0: u"您查询的单号还没有跟踪信息.", 1: u"最新的追踪信息:\n"}
 
-
 def check_status(data):
     return data['status'] != 0
+
+def status_message(status):
+    return STATUS_MAP.get(status, "")
