@@ -61,8 +61,8 @@ def status_message(status):
 db = TrackData()
 zmq_conf = settings['zmq']
 _context = zmq.Context()
-push_sock = zmq.socket(zmq.PUSH)
-push_sock.connect('%s:%d' % (zmq['domain'], zmq['port']))
+push_sock = _context.socket(zmq.PUSH)
+push_sock.connect('%s:%d' % (zmq_conf['domain'], zmq_conf['port']))
 
 @app.route('/', methods=['POST'])
 def receive():
@@ -88,7 +88,7 @@ def receive():
         else:
             track_no = res[0]
             record = db.find_one(track_no)
-            if not record or record['status'] == 0:
+            if record['status'] == 0:
                 return wechat.response_text(status_message(record['status']))
             # has track data for this track No.
             latest = record['data'][-1]

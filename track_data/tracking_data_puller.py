@@ -30,6 +30,8 @@ def serve(port=5599):
             idle = max(idle, 0)
             if socket in conns:
                 data = socket.recv_json()
+                print data
+                continue
                 if 'track_no_list' in data:
                     logger.info('adding [%s]' % ', '.join(data['track_no_list']))
                     for no in data['track_no_list']:
