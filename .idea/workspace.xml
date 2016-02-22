@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="acb5f0c0-2046-44fd-9e62-6a62180c54a4" name="Default" comment="">
+    <list default="true" id="acb5f0c0-2046-44fd-9e62-6a62180c54a4" name="Default" comment="fetch remote">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/track_data/TrackData.py" afterPath="$PROJECT_DIR$/track_data/TrackData.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/track_data/fetch_express_tracking.py" afterPath="$PROJECT_DIR$/track_data/fetch_express_tracking.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wechat_public/configure/settings.py" afterPath="$PROJECT_DIR$/wechat_public/configure/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wechat_public/controllers/basic.py" afterPath="$PROJECT_DIR$/wechat_public/controllers/basic.py" />
     </list>
     <list id="ca0639d6-969f-4202-8983-e3f25495be51" name="changelist.txt" comment="" />
     <ignored path="webchat_service.iws" />
@@ -61,8 +57,8 @@
       <file leaf-file-name="TrackData.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/track_data/TrackData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.026200874">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.62882096">
+              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -564,7 +560,13 @@
       <option name="project" value="LOCAL" />
       <updated>1456169735761</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fetch remote">
+      <created>1456175078690</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1456175078690</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -920,8 +922,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/track_data/TrackData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.026200874">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.62882096">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
