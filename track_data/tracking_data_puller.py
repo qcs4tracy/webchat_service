@@ -30,8 +30,10 @@ def serve(port=5599):
             idle = max(idle, 0)
             if socket in conns:
                 data = socket.recv_json()
-                if 'track_no' in data:
-                    work_que.append(data)
+                if 'track_no_list' in data:
+                    logger.info('adding [%s]' % ', '.join(data['track_no_list']))
+                    for no in data['track_no_list']:
+                        work_que.append({'track_no': no})
                 else:
                     logger.info('Invalid data: empty track NO. [%s]' % str(data))
         else:

@@ -20,7 +20,10 @@ class TrackData(object):
 
 
     def find_one(self, track_no):
-        return self.collection.find_one({'track_no': track_no})
+        r = self.collection.find_one({'track_no': track_no})
+        if r is None:
+            r = {'track_no': track_no, 'status': 0}
+        return r
 
     def exist(self, track_no):
         c = self.collection.count({'track_no': track_no})

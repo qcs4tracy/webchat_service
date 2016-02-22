@@ -48,10 +48,10 @@ def validate():
 
 
 HELP_MESSAGE = u'输入的单号不正确.(正确的单号格式: GA[9位数字]US, 比如: GA207886955US.)'
-from track_data import TrackData
+from track_data.TrackData import TrackData
 
 def check_status(data):
-    return data['status'] != 0
+    return data and data.get('status', 0) != 0
 
 STATUS_MAP = {0: u"您查询的单号还没有跟踪信息.", 1: u"最新的追踪信息:\n"}
 TRACK_INFO_TMP = u'到{time}为止的最新追踪信息:\n\t{track_info}.[{track_time}]'
@@ -82,13 +82,13 @@ def receive():
         # has track no in the text message
         isadding = content.startswith(u'ZQQ')
         if isadding:
-            for track_no in res:
-                push_sock.send(u'{"track_no": %s}' % track_no)
+            nums = ','.join(map(lambda x: '"%s"' % x, res))
+            push_sock.send((u'{"track_no_list": [%s]}' % nums).encode('utf-8'))
             response = wechat.response_text(u'%s\n已添加.' % (u'\n'.join(res),))
         else:
             track_no = res[0]
             record = db.find_one(track_no)
-            if record['status'] == 0:
+            if not record or record['status'] == 0:
                 return wechat.response_text(status_message(record['status']))
             # has track data for this track No.
             latest = record['data'][-1]
