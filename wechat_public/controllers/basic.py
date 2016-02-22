@@ -1,13 +1,16 @@
+# -*- coding: utf-8 -*-
+
 from wechat_sdk import WechatBasic
 from wechat_public import app
 from flask import request
 from wechat_public.configure.settings import settings
 from wechat_public.logging.log import logger
 
-@app.route('/')
+
+@app.route('/ignore')
 def validate():
     wechat = WechatBasic(token=settings['wechat_app']['token'], appid=settings['wechat_app']['appID'],
-                     appsecret=settings['wechat_app']['appsecret'])
+                         appsecret=settings['wechat_app']['appsecret'])
     signature = request.args.get('signature')
     timestamp = request.args.get('timestamp')
     nonce = request.args.get('nonce')
@@ -18,11 +21,20 @@ def validate():
     return ""
 
 
-@app.route('/receive', methods=['POST'])
+@app.route('/', methods=['POST'])
 def receive():
     wechat = WechatBasic(token=settings['wechat_app']['token'], appid=settings['wechat_app']['appID'],
-                     appsecret=settings['wechat_app']['appsecret'])
-    wechat.parse_data(request.get_data(as_text=True))
+                         appsecret=settings['wechat_app']['appsecret'])
+    data = request.get_data(as_text=True)
+    for k, v in request.headers:
+        print '%s : %s' % (k, v)
+    print data
+    wechat.parse_data(data)
     message = wechat.get_message()
-    print message.id, message.source, message.target, message.time, message.content
-    return ""
+    if message.type == 'text':
+        if message.content == 'wechat':
+            response = wechat.response_text(u'^_^')
+        else:
+            response = wechat.response_text(u'文字')
+        return response
+    return 'success'
