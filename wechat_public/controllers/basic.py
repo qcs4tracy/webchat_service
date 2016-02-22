@@ -24,5 +24,5 @@ def receive():
                      appsecret=settings['wechat_app']['appsecret'])
     wechat.parse_data(request.get_data(as_text=True))
     message = wechat.get_message()
-    print (dir(message))
+    print message.id, message.source, message.target, message.time, message.content
     return ""
